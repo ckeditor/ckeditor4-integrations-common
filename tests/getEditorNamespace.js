@@ -4,6 +4,7 @@
  */
 
 import { getEditorNamespace } from '../src';
+import sinon from 'sinon';
 
 const CKEditorNamespace = window.CKEDITOR;
 
@@ -22,6 +23,13 @@ describe( 'getEditorNamespace', () => {
 	it( 'should load script and resolve with loaded namespace', () => {
 		return getEditorNamespace( fakeScriptWithNamespace ).then( namespace => {
 			expect( namespace ).to.equal( window.CKEDITOR );
+		} );
+	} );
+
+	it( 'when namespace loaded for the first time should pre-call callback', () => {
+		const spy = sinon.spy();
+		return getEditorNamespace( fakeScriptWithNamespace, spy ).then( namespace => {
+			expect( spy.calledWith( namespace ) ).to.equal( true );
 		} );
 	} );
 
@@ -69,6 +77,16 @@ describe( 'getEditorNamespace', () => {
 		it( 'and empty string passed shouldn\'t throw', () => {
 			expect( () => getEditorNamespace( '' ) )
 				.to.not.throw();
+		} );
+
+		it( 'shouldn\'t call callback for the second time', () => {
+			const spy = sinon.spy();
+
+			return namespacePromise.then( () => {
+				return getEditorNamespace( 'test', spy );
+			} ).then( () => {
+				expect( spy.called ).to.equal( false );
+			} );
 		} );
 	} );
 } );

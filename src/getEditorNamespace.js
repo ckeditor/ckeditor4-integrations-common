@@ -9,7 +9,7 @@ import loadScript from 'load-script';
 
 let promise;
 
-export default function getEditorNamespace( editorURL ) {
+export default function getEditorNamespace( editorURL, namespaceLoaded ) {
 	if ( 'CKEDITOR' in window ) {
 		return Promise.resolve( CKEDITOR );
 	}
@@ -21,6 +21,13 @@ export default function getEditorNamespace( editorURL ) {
 	if ( !promise ) {
 		promise = getEditorNamespace.scriptLoader( editorURL ).then( res => {
 			promise = undefined;
+
+			// Call this callback only if CKEDITOR namespace
+			// has been loaded by external script for the first time.
+			if ( namespaceLoaded ) {
+				namespaceLoaded( res );
+			}
+
 			return res;
 		} );
 	}
