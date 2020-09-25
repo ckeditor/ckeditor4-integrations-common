@@ -1,7 +1,5 @@
 # CKEditor 4 - Common Integration Utils
 
-**Work In progress**
-
 This package implements common utility modules for integration projects.
 
 ## Installation and usage
