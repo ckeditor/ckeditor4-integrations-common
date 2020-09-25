@@ -1,0 +1,22 @@
+{
+	"name": "ckeditor4-integrations-common",
+	"version": "0.0.1",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/ckeditor/ckeditor4-integrations-common.git"
+	},
+	"author": "CKSource (http://cksource.com/)",
+	"license": "(GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-1.1-or-later)",
+	"bugs": {
+		"url": "https://github.com/ckeditor/ckeditor4-integrations-common/issues"
+	},
+	"homepage": "https://github.com/ckeditor/ckeditor4-integrations-common#readme",
+	"dependencies": {
+		"load-script": "^1.0.0"
+	}
+}
