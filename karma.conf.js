@@ -160,7 +160,7 @@ module.exports = function( config ) {
 			username: process.env.BROWSER_STACK_USERNAME,
 			accessKey: process.env.BROWSER_STACK_ACCESS_KEY,
 			build: getBuildName(),
-			project: 'ckeditor4'
+			project: 'ckeditor4-integrations-common'
 		}
 	} );
 };
