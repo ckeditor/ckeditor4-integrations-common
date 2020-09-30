@@ -77,7 +77,7 @@ describe( 'getEditorNamespace', () => {
 
 		it( 'and empty string passed shouldn\'t throw', () => {
 			return getEditorNamespace( fakeScriptWithNamespace ).catch( () => {
-				assert.isNotOk();
+				assert.fail();
 			} );
 		} );
 
