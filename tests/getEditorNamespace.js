@@ -6,18 +6,12 @@
 import { getEditorNamespace } from '../src';
 import sinon from 'sinon';
 
-const CKEditorNamespace = window.CKEDITOR;
-
 describe( 'getEditorNamespace', () => {
 	const fakeScriptWithNamespace = 'data:text/javascript;base64,d2luZG93LkNLRURJVE9SID0ge307';
 	const fakeScriptWithoutNamespace = 'data:text/javascript;base64,';
 
 	beforeEach( () => {
 		delete window.CKEDITOR;
-	} );
-
-	afterEach( () => {
-		window.CKEDITOR = CKEditorNamespace;
 	} );
 
 	it( 'should load script and resolve with loaded namespace', () => {
@@ -35,14 +29,14 @@ describe( 'getEditorNamespace', () => {
 
 	it( 'when script doesn\'t provide namespace should reject with an error', () => {
 		return getEditorNamespace( fakeScriptWithoutNamespace ).catch( err => {
-			expect( err ).to.be.a( 'error' );
+			expect( err ).to.be.an( 'error' );
 			expect( err.message ).to.equal( 'Script loaded from editorUrl doesn\'t provide CKEDITOR namespace.' );
 		} );
 	} );
 
 	it( 'when script cannot be loaded should reject with an error', () => {
 		return getEditorNamespace( 'non-existent.js' ).catch( err => {
-			expect( err ).to.be.a( 'error' );
+			expect( err ).to.be.an( 'error' );
 		} );
 	} );
 
@@ -68,11 +62,11 @@ describe( 'getEditorNamespace', () => {
 			expect( namespacePromise ).to.be.a( 'promise' );
 		} );
 
-		it( 'promise should resolve with CKEditor namespace',
-			() => namespacePromise.then( namespace => {
+		it( 'promise should resolve with CKEditor namespace', () => {
+			namespacePromise.then( namespace => {
 				expect( namespace ).to.equal( window.CKEDITOR );
-			} )
-		);
+			} );
+		} );
 
 		it( 'and empty string passed shouldn\'t throw', () => {
 			expect( () => getEditorNamespace( '' ) )

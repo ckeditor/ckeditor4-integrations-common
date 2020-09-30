@@ -1,3 +1,3 @@
-import getEditorNamespace from './getEditorNamespace.js'
+import getEditorNamespace from './getEditorNamespace.js';
 
-export { getEditorNamespace }
+export { getEditorNamespace };
