@@ -2,10 +2,15 @@
 	"name": "ckeditor4-integrations-common",
 	"version": "0.0.1",
 	"description": "",
-	"main": "src/index.js",
+	"main": "dist/index.js",
+	"module": "src/index.js",
 	"scripts": {
 		"test": "karma start",
-		"test-watch": "karma start --auto-watch --no-single-run"
+		"develop": "karma start --auto-watch --no-single-run",
+		"build": "webpack --mode production",
+		"preversion": "npm test",
+		"version": "npm run build && git add -f dist/",
+		"postversion": "git rm -r --cached dist/ && git commit -m \"Cleanup after release [ci skip]\" && git push origin && git push origin --tags"
 	},
 	"repository": {
 		"type": "git",
@@ -25,6 +30,7 @@
 		"@babel/preset-env": "^7.11.5",
 		"babel-loader": "^8.1.0",
 		"chai": "^4.2.0",
+		"core-js": "^3.6.5",
 		"eslint": "^7.9.0",
 		"eslint-config-ckeditor5": "^3.1.0",
 		"istanbul-instrumenter-loader": "^3.0.1",
