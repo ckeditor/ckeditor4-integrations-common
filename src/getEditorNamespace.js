@@ -15,13 +15,11 @@ export default function getEditorNamespace( editorURL, onNamespaceLoaded ) {
 	}
 
 	if ( editorURL.length < 1 ) {
-		throw new TypeError( 'CKEditor URL must be a non-empty string.' );
+		return Promise.reject( new TypeError( 'CKEditor URL must be a non-empty string.' ) );
 	}
 
 	if ( !promise ) {
 		promise = getEditorNamespace.scriptLoader( editorURL ).then( res => {
-			promise = undefined;
-
 			// Call this callback only if CKEDITOR namespace
 			// has been loaded by external script for the first time.
 			if ( onNamespaceLoaded ) {
@@ -37,6 +35,8 @@ export default function getEditorNamespace( editorURL, onNamespaceLoaded ) {
 
 getEditorNamespace.scriptLoader = editorURL => new Promise( ( scriptResolve, scriptReject ) => {
 	loadScript( editorURL, err => {
+		promise = undefined;
+
 		if ( err ) {
 			return scriptReject( err );
 		} else if ( !window.CKEDITOR ) {

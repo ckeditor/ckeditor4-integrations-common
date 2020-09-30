@@ -3,6 +3,8 @@
  * For licensing, see LICENSE.md.
  */
 
+/* global assert */
+
 import { getEditorNamespace } from '../src';
 import sinon from 'sinon';
 
@@ -37,47 +39,54 @@ describe( 'getEditorNamespace', () => {
 	it( 'when script cannot be loaded should reject with an error', () => {
 		return getEditorNamespace( 'non-existent.js' ).catch( err => {
 			expect( err ).to.be.an( 'error' );
+			expect( err.message ).to.equal( 'Failed to load http://localhost:9876/non-existent.js' );
 		} );
 	} );
 
 	it( 'should return the same promise', () => {
-		expect( getEditorNamespace( fakeScriptWithNamespace ) )
-			.to.equal( getEditorNamespace( fakeScriptWithNamespace ) );
+		const promise1 = getEditorNamespace( fakeScriptWithNamespace );
+		const promise2 = getEditorNamespace( fakeScriptWithNamespace );
+
+		expect( promise1 ).to.equal( promise2 );
+
+		return Promise.all( [ promise1, promise2 ] );
 	} );
 
 	it( 'when empty string passed should throw', () => {
-		expect( () => getEditorNamespace( '' ) )
-			.to.throw( 'CKEditor URL must be a non-empty string.' );
+		return getEditorNamespace( '' ).catch( err => {
+			expect( err ).to.be.an( 'error' );
+			expect( err.message ).to.equal( 'CKEditor URL must be a non-empty string.' );
+		} );
 	} );
 
 	describe( 'when namespace is present', () => {
-		let namespacePromise;
-
 		beforeEach( () => {
 			window.CKEDITOR = {};
-			namespacePromise = getEditorNamespace( 'test' );
 		} );
 
 		it( 'should return a promise', () => {
-			expect( namespacePromise ).to.be.a( 'promise' );
+			const promise = getEditorNamespace( fakeScriptWithNamespace );
+			expect( promise ).to.be.a( 'promise' );
+			return promise;
 		} );
 
 		it( 'promise should resolve with CKEditor namespace', () => {
-			namespacePromise.then( namespace => {
+			return getEditorNamespace( fakeScriptWithNamespace ).then( namespace => {
 				expect( namespace ).to.equal( window.CKEDITOR );
 			} );
 		} );
 
 		it( 'and empty string passed shouldn\'t throw', () => {
-			expect( () => getEditorNamespace( '' ) )
-				.to.not.throw();
+			return getEditorNamespace( fakeScriptWithNamespace ).catch( () => {
+				assert.isNotOk();
+			} );
 		} );
 
 		it( 'shouldn\'t call callback for the second time', () => {
 			const spy = sinon.spy();
 
-			return namespacePromise.then( () => {
-				return getEditorNamespace( 'test', spy );
+			return getEditorNamespace( fakeScriptWithNamespace ).then( () => {
+				return getEditorNamespace( fakeScriptWithNamespace, spy );
 			} ).then( () => {
 				expect( spy.called ).to.equal( false );
 			} );
