@@ -24,6 +24,7 @@ describe( 'getEditorNamespace', () => {
 
 	it( 'when namespace loaded for the first time should pre-call callback', () => {
 		const spy = sinon.spy();
+
 		return getEditorNamespace( fakeScriptWithNamespace, spy ).then( namespace => {
 			expect( spy.calledWith( namespace ) ).to.equal( true );
 		} );
@@ -65,7 +66,9 @@ describe( 'getEditorNamespace', () => {
 
 		it( 'should return a promise', () => {
 			const promise = getEditorNamespace( fakeScriptWithNamespace );
+
 			expect( promise ).to.be.a( 'promise' );
+
 			return promise;
 		} );
 
