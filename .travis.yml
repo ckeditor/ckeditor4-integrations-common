@@ -1,32 +1,30 @@
 os: linux
 dist: xenial
-
 services:
 - xvfb
-
 branches:
   only:
   - master
   - major
   - stable
   - latest
-  - /^\d+\.\d+(\.\d+)?(-\S*)?$/
-  - /^release\/\d+\.\d+\.x$/
-
+  - "/^\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
+  - "/^release\\/\\d+\\.\\d+\\.x$/"
 addons:
   chrome: stable
   firefox: latest
-
 language: node_js
 node_js:
 - '12'
-
 cache:
 - node_modules
-
 before_install:
 - export DISPLAY=:99.0
 install:
 - npm install
 script:
 - npm run test
+env:
+  global:
+  - secure: K+H5Cu5oQB46Vvdb4u6bnU2a9WDfrU+UWMyz9kFPQBe2Wf/KqaikI4F7I6crKMM2fuptMk5MdXZnBLjUmSx/AykNl2BqbWKCZyo3NcnDL+4BQ+HX+Uj7fYnroQ09CQxx5GHuyIc+9sttj2RG/VDJmVhlLp3dU4ZLiCi2B1IF2uzfBeIPrrJP8f5w0UtqRvANYz2zLXAiWdHo2RyRONucad9JTaPTdZhPj7cN7cWhHhHzWxKXZDDs2i+FCJO+ZEC6DLDoyz7cyZUosYKgikOMNdqo/zycV7BGa2XIoYyEniWPyC3kc4AE7y+VKJfIM20UtFcLMq2MVH6ZDSWNPMyrPpV03vo1WUlH3t6IiLpiY16+M1aqi2uazZfk48al61P4BG8IYOgpfHDJK6DvrAYv0FgsNWORSgzBLk32bUisXJgGC4LRdBCym00L4JB2XK3d+22ecD3eccLItK4EL0dEShy7RNx4RojkDv49j3fPRkOOmfpmUhsY3Q7kx/uDH6hS0TKPyzQllV67YmZG7aCOmafUvxhqJP215/pG1M7vTeCHgxbnCsR5/uOkI8Y4jl1yo1J1fbvzDU1AnLmzOqoTw7nlcRx+gWd9O1iSh4PzwBvveQ7bARLnL4RZavSrtIL1+3cQ8n0cNB8t1uXOriIx+Gdah9i+kXn9Czgw90Gw0Lc=
+  - secure: a747WwbRaL8qI0Fxd5a44k0+O9VP4ZWLruIIDX5QPvU/E1UKvVCPKA1rDhgddAfO/GVfXQFPY0VPPgbucFPC5mTarpW/8bgzPkeBVXQWhegXDomJ0+X6nxLymhZXlq7jsgg3Evf6AvkJuQbe1ZTIily1a56dURkqsMsEmQMGUnPgmdTi7hpzQMOQCCJvOVBNyOGFaThEcfQGjxyWh+iGpg72HMGAu20/hpMAWJXmboShEf1K3pyqINwpyzBfwCazZ3sHKfrwyv/vKk6VHHas+q2fjm+RvHZ9RjlB9YZZbZRMN2W3OwQhD/8gXTdyvEqcc0SHAr+9Lo7Pj4fE0G1HtbT8RIqkPEFRwuIR4izvD9mRtDz196f+0UU/YCMpQXiO9idZtfQ0Lcrxlp9AV/Ubvb1V5RMDssYvaWyjhOMgT0Xq7AzrmORupKAGmhVezIzVuqw2q5hoGQEVMu2TPnJly2zzcR+0hBS9+9vyYLCU3vSXF48FwXlOrtoPD/klhCZdsncDzCJUu8PjBs3aOssbR4O8LOoEqSnUSY9Ha4R+hO02qtG4CouvBCx9KzG8nfXH6h/lcLFxqNmmhS72196MoAaJdiMv4dpDl8E+m+/iXKkotqu0QgcQdNWla1pgjfpziIeq95xQj9Au1RcUxp7EFeUcgQaTA2opEAo4q4rg57E=
