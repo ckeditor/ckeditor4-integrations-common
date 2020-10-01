@@ -24,4 +24,19 @@ describe( 'debounce', () => {
 
 		clock.restore();
 	} );
+
+	it( 'should have correct context object', () => {
+		const clock = sinon.useFakeTimers();
+		const context = { called: false };
+
+		const fn = debounce( function() {
+			this.called = true;
+		}, 100, context );
+
+		fn();
+
+		clock.tick( 100 );
+
+		expect( context.called ).to.equal( true );
+	} );
 } );
