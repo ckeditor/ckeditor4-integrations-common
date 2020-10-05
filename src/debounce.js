@@ -3,12 +3,12 @@
  * For licensing, see LICENSE.md.
  */
 
-function debounce( fn, ms, context = {} ) {
+function debounce( fn, delay, context = {} ) {
 	let cancel;
 
 	return function( ...args ) {
 		clearTimeout( cancel );
-		cancel = setTimeout( fn.bind( context, ...args ), ms );
+		cancel = setTimeout( fn.bind( context, ...args ), delay );
 	};
 }
 
