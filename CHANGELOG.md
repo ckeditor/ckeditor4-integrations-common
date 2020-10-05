@@ -5,3 +5,4 @@
 New Features:
 
 * [#1](https://github.com/ckeditor/ckeditor4-integrations-common/issues/1): Introduced `getEditorNamespace()` function.
+* [#6](https://github.com/ckeditor/ckeditor4-integrations-common/issues/6): Introduced `debounce()` function.
