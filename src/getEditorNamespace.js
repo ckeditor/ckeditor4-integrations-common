@@ -9,6 +9,31 @@ import loadScript from 'load-script';
 
 let promise;
 
+/**
+ * Loads `CKEDITOR` script using the given URL.
+ *
+ * ```js
+ * getEditorNamespace( 'https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js' ).then( CKEDITOR => {
+ *		console.log( CKEDITOR.version );
+ * } );
+ * ```
+ *
+ * Note that this function won't load provided URL if `CKEDITOR` namespace is already available
+ * in the global namespace.
+ *
+ * You can also provide additional `onNamespaceLoaded` callback which will be called only when the given
+ * URL has been used to load `CKEDITOR` namespace.
+ *
+ * ```js
+ * getEditorNamespace( 'https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js', function( CKEDITOR ) {
+ *		console.log( CKEDITOR.version );
+ * } );
+ *
+ * @param {String} editorURL
+ * @param {Function} onNamespaceLoaded
+ * @returns {Promise}
+ * ```
+ */
 export default function getEditorNamespace( editorURL, onNamespaceLoaded ) {
 	if ( 'CKEDITOR' in window ) {
 		return Promise.resolve( CKEDITOR );
