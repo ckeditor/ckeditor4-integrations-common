@@ -1,6 +1,6 @@
 # CKEditor 4 - Common Integration Utils
 
-## ckeditor4-integrations-common 0.0.1
+## ckeditor4-integrations-common 0.1.0
 
 New Features:
 
