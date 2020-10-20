@@ -28,11 +28,11 @@ let promise;
  * getEditorNamespace( 'https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js', function( CKEDITOR ) {
  *		console.log( CKEDITOR.version );
  * } );
- *
+ * ```
+ * 
  * @param {String} editorURL
  * @param {Function} onNamespaceLoaded
  * @returns {Promise}
- * ```
  */
 export default function getEditorNamespace( editorURL, onNamespaceLoaded ) {
 	if ( 'CKEDITOR' in window ) {
