@@ -59,6 +59,27 @@ describe( 'getEditorNamespace', () => {
 		} );
 	} );
 
+	it( 'when undefined passed should throw', () => {
+		return getEditorNamespace( undefined ).catch( err => {
+			expect( err ).to.be.an( 'error' );
+			expect( err.message ).to.equal( 'CKEditor URL must be a non-empty string.' );
+		} );
+	} );
+
+	it( 'when null passed should throw', () => {
+		return getEditorNamespace( null ).catch( err => {
+			expect( err ).to.be.an( 'error' );
+			expect( err.message ).to.equal( 'CKEditor URL must be a non-empty string.' );
+		} );
+	} );
+
+	it( 'when 1 passed should throw', () => {
+		return getEditorNamespace( 1 ).catch( err => {
+			expect( err ).to.be.an( 'error' );
+			expect( err.message ).to.equal( 'CKEditor URL must be a non-empty string.' );
+		} );
+	} );
+
 	describe( 'when namespace is present', () => {
 		beforeEach( () => {
 			window.CKEDITOR = {};
