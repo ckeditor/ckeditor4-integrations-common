@@ -29,7 +29,7 @@ let promise;
  *		console.log( CKEDITOR.version );
  * } );
  * ```
- * 
+ *
  * @param {String} editorURL
  * @param {Function} onNamespaceLoaded
  * @returns {Promise}
@@ -39,7 +39,7 @@ export default function getEditorNamespace( editorURL, onNamespaceLoaded ) {
 		return Promise.resolve( CKEDITOR );
 	}
 
-	if ( editorURL.length < 1 ) {
+	if ( typeof editorURL !== 'string' || editorURL.length < 1 ) {
 		return Promise.reject( new TypeError( 'CKEditor URL must be a non-empty string.' ) );
 	}
 
