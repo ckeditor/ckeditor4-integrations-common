@@ -2,6 +2,7 @@
 	"name": "ckeditor4-integrations-common",
 	"version": "0.1.0",
 	"description": "Common CKEditor 4 integration utilities.",
+	"browser": "dist/index.js",
 	"main": "dist/index.js",
 	"module": "src/index.js",
 	"scripts": {
