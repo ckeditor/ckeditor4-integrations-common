@@ -3,7 +3,7 @@
  * For licensing, see LICENSE.md.
  */
 
-import loadScript from 'load-script';
+import loadScript from './loadScript';
 
 /* global CKEDITOR */
 
