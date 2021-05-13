@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import cleanup from 'rollup-plugin-cleanup';
+import { babel } from '@rollup/plugin-babel';
 
 const input = 'src/index.js';
 const banner = `/**
@@ -18,7 +19,7 @@ export default [
 			file: 'dist/index.umd.min.js',
 			name: 'CKEditor4IntegrationsCommon'
 		},
-		plugins: [ commonjs(), cleanupPlugin(), terser() ]
+		plugins: [ babelPlugin(), commonjs(), cleanupPlugin(), terser() ]
 	},
 	// Creates `cjs` build that can be further optimized downstream.
 	{
@@ -28,7 +29,7 @@ export default [
 			format: 'cjs',
 			file: 'dist/index.cjs.js'
 		},
-		plugins: [ commonjs(), cleanupPlugin() ]
+		plugins: [ babelPlugin(), commonjs(), cleanupPlugin() ]
 	},
 	// Creates `esm` build that can be further optimized downstream.
 	{
@@ -38,9 +39,13 @@ export default [
 			format: 'esm',
 			file: 'dist/index.esm.js'
 		},
-		plugins: [ commonjs(), cleanupPlugin() ]
+		plugins: [ babelPlugin(), commonjs(), cleanupPlugin() ]
 	}
 ];
+
+function babelPlugin() {
+	return babel( { babelHelpers: 'bundled', presets: [ '@babel/preset-env' ] } );
+}
 
 function cleanupPlugin() {
 	return cleanup( {
