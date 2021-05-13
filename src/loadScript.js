@@ -1,6 +1,7 @@
 /**
- * The script below was copied over from https://github.com/eldargab/load-script. *
- * The repo seems to be not maintained anymore.
+ * The script below was copied over from https://github.com/eldargab/load-script, because the repo seems to be not maintained anymore.
+ *
+ * Version at commit: https://github.com/eldargab/load-script/blob/318ead6c590d403e0fbd4ae6e76b0407614addec/index.js
  */
 
 module.exports = function load( src, opts, cb ) {
