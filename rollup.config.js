@@ -5,9 +5,9 @@ import { babel } from '@rollup/plugin-babel';
 
 const input = 'src/index.js';
 const banner = `/**
-* @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-* For licensing, see LICENSE.md.
-*/`;
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md.
+ */`;
 
 export default [
 	// Creates `umd` build that can be directly consumed via <script /> tag.
