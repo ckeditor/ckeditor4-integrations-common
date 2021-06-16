@@ -1,5 +1,11 @@
 # CKEditor 4 - Common Integration Utils
 
+## ckeditor4-integrations-common 1.0.0
+
+BREAKING CHANGES:
+
+* [#17](https://github.com/ckeditor/ckeditor4-integrations-common/issues/17): Introduced support for consumption of a not bundled package version by providing package in ESM, CJS and UMD formats.
+
 ## ckeditor4-integrations-common 0.2.0
 
 BREAKING CHANGES:
