@@ -4,7 +4,7 @@
  * Version at commit: https://github.com/eldargab/load-script/blob/318ead6c590d403e0fbd4ae6e76b0407614addec/index.js
  */
 
-module.exports = function load( src, opts, cb ) {
+export default function( src, opts, cb ) {
 	const head = document.head || document.getElementsByTagName( 'head' )[ 0 ];
 	const script = document.createElement( 'script' );
 
@@ -40,7 +40,7 @@ module.exports = function load( src, opts, cb ) {
 	}
 
 	head.appendChild( script );
-};
+}
 
 function setAttributes( script, attrs ) {
 	for ( const attr in attrs ) {

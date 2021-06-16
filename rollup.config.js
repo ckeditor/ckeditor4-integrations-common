@@ -1,4 +1,3 @@
-import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import cleanup from 'rollup-plugin-cleanup';
 import { babel } from '@rollup/plugin-babel';
@@ -19,7 +18,7 @@ export default [
 			file: 'dist/index.umd.min.js',
 			name: 'CKEditor4IntegrationsCommon'
 		},
-		plugins: [ babelPlugin(), commonjs(), cleanupPlugin(), terser() ]
+		plugins: [ babelPlugin(), cleanupPlugin(), terser() ]
 	},
 	// Creates `cjs` build that can be further optimized downstream.
 	{
@@ -29,7 +28,7 @@ export default [
 			format: 'cjs',
 			file: 'dist/index.cjs.js'
 		},
-		plugins: [ babelPlugin(), commonjs(), cleanupPlugin() ]
+		plugins: [ babelPlugin(), cleanupPlugin() ]
 	},
 	// Creates `esm` build that can be further optimized downstream.
 	{
@@ -39,7 +38,7 @@ export default [
 			format: 'esm',
 			file: 'dist/index.esm.js'
 		},
-		plugins: [ babelPlugin(), commonjs(), cleanupPlugin() ]
+		plugins: [ babelPlugin(), cleanupPlugin() ]
 	}
 ];
 
