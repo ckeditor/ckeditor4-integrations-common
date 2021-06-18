@@ -1,6 +1,6 @@
 {
 	"name": "ckeditor4-integrations-common",
-	"version": "0.2.0",
+	"version": "1.0.0",
 	"description": "Common CKEditor 4 integration utilities.",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.esm.js",
