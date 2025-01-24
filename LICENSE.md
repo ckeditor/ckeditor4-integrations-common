@@ -2,7 +2,7 @@ Software License Agreement
 ==========================
 
 **CKEditor 4 - Common Integration Utils**<br>
-Copyright (c) 2003-2024, [CKSource](http://cksource.com) Holding sp. z o.o. All rights reserved.
+Copyright (c) 2003-2025, [CKSource](http://cksource.com) Holding sp. z o.o. All rights reserved.
 
 Licensed under the terms of any of the following licenses at your
 choice:
