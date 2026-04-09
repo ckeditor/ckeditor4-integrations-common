@@ -11,13 +11,13 @@ jobs:
     steps:
       - name: Checkout default branch
         # https://github.com/marketplace/actions/checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 #v2
         with:
           token: ${{ secrets.GH_WORKFLOWS_TOKEN }}
 
       - name: Checkout common workflows repository
         # https://github.com/marketplace/actions/checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 #v2
         with:
           path: ckeditor4-workflows-common
           repository: ckeditor/ckeditor4-workflows-common
@@ -49,7 +49,7 @@ jobs:
       - name: Push changes
         if: env.HAS_CHANGES == 1
         # https://github.com/marketplace/actions/github-push
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@4cc74773234f74829a8c21bc4d69dd4be9cfa599 #v1.0.0
         with:
           github_token: ${{ secrets.GH_WORKFLOWS_TOKEN }}
           branch: ${{ github.ref }}
